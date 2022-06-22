@@ -3,35 +3,29 @@ let counterPlayer;
 let counterComputer;
 
 function getComputerSelect() {
-    let resultado;
     let eleccionComputer;
+    let resultadoComputer;
 
     let computerPlay = Math.floor(Math.random() * 3 + 1);
 
     if ( computerPlay == 1) {
-            eleccionComputer = "piedra";
-        }
-
-    else if (computerPlay == 2) {
-            eleccionComputer = "papel";
-        }
-    else {
-            eleccionComputer = "tijera";
-        
-        }
-
-        return eleccionComputer;
-        
+        eleccionComputer = "piedra";
+    } else if (computerPlay == 2) {
+        eleccionComputer = "papel";
+    } else {
+        eleccionComputer = "tijera";
     }
+
+    return eleccionComputer;
+        
+}
     
     
 function getPlayerSelect() {
         let eleccionPlayer = prompt("Elige piedra papel o tijera",);
         eleccionMinusPlayer = eleccionPlayer.toLowerCase();
         return eleccionMinusPlayer;
-        
-        
-    }
+}
 
 function comprobarGanador(eleccionComputer, eleccionMinusPlayer) {
    
@@ -51,12 +45,15 @@ function comprobarGanador(eleccionComputer, eleccionMinusPlayer) {
 
 
 
-//document.write("El jugador ha elegido: "+ eleccionMinusPlayer +"<br> La maquina ha elegido: "+eleccionComputer);
-
-    
-    
-    
-    
 
 
-comprobarGanador(getPlayerSelect(), getComputerSelect());
+
+
+
+
+let playerHand = getPlayerSelect();
+let computerHand = getComputerSelect();
+
+document.write("El jugador ha elegido: "+ playerHand +"<br> La maquina ha elegido: "+computerHand);
+
+comprobarGanador(computerHand, playerHand);
