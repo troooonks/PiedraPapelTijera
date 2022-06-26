@@ -31,14 +31,14 @@ function getPlayerSelect() {
 }
 
 
-function comprobarGanador(eleccionComputer, eleccionMinusPlayer) {
+function playRound(eleccionComputer, eleccionMinusPlayer) {
 
 
     if ((eleccionComputer == "piedra" && eleccionMinusPlayer == "tijera")|| 
     (eleccionComputer == "papel" && eleccionMinusPlayer == "piedra") ||
     (eleccionComputer == "tijera" && eleccionMinusPlayer == "papel")) {
         document.write("<h1> Perdiste </h1>");
-         } else if (eleccionComput<er == eleccionMinusPlayer) {
+         } else if (eleccionComputer == eleccionMinusPlayer) {
         document.write("<h1>Empate!</h1>");
     } else if ((eleccionMinusPlayer == "piedra" && eleccionComputer == "tijera")|| 
     (eleccionMinusPlayer == "papel" && eleccionComputer == "piedra") ||
@@ -74,7 +74,9 @@ if ((computerHand == "piedra" && playerHand == "tijera")||
 document.write("El jugador ha elegido: "+ playerHand +"<br> La maquina ha elegido: "+computerHand);
 
 for (let i = 0; i < 5; i++){
-comprobarGanador(computerHand, playerHand);
-setScore();
-document.write("<h3>Marcador:</h3><h2>Jugador: "+counterPlayer+"</h2><h2>Ordenador: "+counterComputer+"</h2>");
+    getPlayerSelect();
+    getComputerSelect();
+    playRound(computerHand, playerHand);
+    setScore();
+    document.write("<h3>Marcador:</h3><h2>Jugador: "+counterPlayer+"</h2><h2>Ordenador: "+counterComputer+"</h2>");
 }
