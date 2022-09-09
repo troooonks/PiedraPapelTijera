@@ -1,6 +1,7 @@
 
 let counterPlayer = 0;
 let counterComputer = 0;
+let diegoComputer = [];
 
 function getComputerSelect() {
     let eleccionComputer;
@@ -13,21 +14,26 @@ function getComputerSelect() {
         eleccionComputer = "papel";
     } else if (computerPlay == 3) {
         eleccionComputer = "tijera";
-    } else {
+    }    else {
         document.write("La Computadora está rota");
-    }
     console.log("el if de la maquina tiene el valor:"+eleccionComputer);
     return eleccionComputer;
         
 }
+
+/*function getComputerSelect() {
+    
+    diegoComputer =  [piedra,papel,tijera];
+    eleccionComputer = diegoComputer[Math.floor(Math.random() * 3 )];
+    return eleccionComputer;
+}*/
     
     
 function getPlayerSelect() {
         let eleccionPlayer = prompt("Elige piedra papel o tijera",);
         eleccionMinusPlayer = eleccionPlayer.toLowerCase();
         document.write("<h1>"+eleccionMinusPlayer+"<h1>");
-        return eleccionMinusPlayer;
-        
+        return eleccionMinusPlayer; 
 }
 
 
@@ -38,8 +44,11 @@ function playRound(eleccionComputer, eleccionMinusPlayer) {
     (eleccionComputer == "papel" && eleccionMinusPlayer == "piedra") ||
     (eleccionComputer == "tijera" && eleccionMinusPlayer == "papel")) {
         document.write("<h1> Perdiste </h1>");
+        counterComputer = counterComputer +1;
+
          } else if (eleccionComputer == eleccionMinusPlayer) {
         document.write("<h1>Empate!</h1>");
+
     } else if ((eleccionMinusPlayer == "piedra" && eleccionComputer == "tijera")|| 
     (eleccionMinusPlayer == "papel" && eleccionComputer == "piedra") ||
     (eleccionMinusPlayer == "tijera" && eleccionComputer == "papel")) {
@@ -71,11 +80,12 @@ if ((computerHand == "piedra" && playerHand == "tijera")||
 
 
 
-document.write("El jugador ha elegido: "+ playerHand +"<br> La maquina ha elegido: "+computerHand);
+
 
 for (let i = 0; i < 5; i++){
     getPlayerSelect();
     getComputerSelect();
+    document.write("El jugador ha elegido: "+ playerHand +"<br> La maquina ha elegido: "+computerHand);
     playRound(computerHand, playerHand);
     setScore();
     document.write("<h3>Marcador:</h3><h2>Jugador: "+counterPlayer+"</h2><h2>Ordenador: "+counterComputer+"</h2>");
