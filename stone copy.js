@@ -1,8 +1,7 @@
-
+//jugada máquina
 let computerPlay;
 let computerHand = "";
 let playerSelection;
-//asigno las llamadas a elementos de html a variables
 let text = document.getElementById("playerSelection");
 let text2 = document.getElementById("computerSelection")
 let gameResult = document.getElementById("gameResult");
