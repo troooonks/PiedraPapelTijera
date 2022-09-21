@@ -4,11 +4,14 @@ let computerHand = "";
 let playerSelection;
 let computerScore = 0;
 let playerScore = 0;
+
 //asigno las llamadas a elementos de html a variables
 let text = document.getElementById("playerSelection");
 let text2 = document.getElementById("computerSelection")
 let gameResult = document.getElementById("gameResult");
 let score = document.getElementById("score");
+let win = document.getElementById("controls");
+
 
 //Jugada máquina, selecciona aleatorio y devuelve string en computerHand
 function computerSelect() {
@@ -52,10 +55,10 @@ function compareRound(player, computer) {
         winner = "player";
     }
     else if (player == "scissors" && computer == "rock" ||
-            player == "rock" && computer == "paper"     ||
-            player == "paper" && computer == "scissors") {
-            gameResult.innerHTML = "Computer win this round";
-            winner = "computer";                
+        player == "rock" && computer == "paper"     ||
+        player == "paper" && computer == "scissors") {
+        gameResult.innerHTML = "Computer win this round";
+        winner = "computer";                
                 
     }
     else if (player ==  computer) {
@@ -67,55 +70,19 @@ function compareRound(player, computer) {
 
 function roundWinner(scorer) {
     
+    if (scorer == "player") {
+        playerScore = playerScore +1;
+    } else if (scorer == "computer" ) {
+        computerScore = computerScore +1;
+    }
+
+    if (playerScore == 5) {
+        win.innerHTML = "<h1>You won!</h1>"
+    } else if (computerScore == 5) {
+        win.innerHTML = "<h1>Computer won</h1>";
+    }
+
     
-    if (scorer == "computer") {
-            if (isNaN(computerScore) == true) {
-                computerScore = 1;
-                    if (isNaN(playerScore) == true){
-                    playerScore = 0;
-                    } else if (isNaN(playerScore) == false){
-                    playerScore = playerScore;
-                    }
-
-            } else if (isNaN(computerScore) == false) {
-                computerScore = computerScore +1;
-                    if (isNaN(playerScore) == true) {
-                    playerScore = 0;
-                    } else if (isNaN(playerScore) == false) {
-                    playerScore = playerScore;
-                    }
-            } 
-    
-
-    } else if (scorer == "player") {
-        if (isNaN(playerScore) == true) {
-            playerScore = 1;
-                if (isNaN(computerScore) == true){
-                    computerScore = 0;
-                } else if (isNaN(computerScore == false)) {
-                    computerScore = computerScore;
-                }
-        } else if (isNaN(playerScore) == false) {
-            playerScore = playerScore + 1;
-                if (isNaN(computerScore) == true) {
-                computerScore = 0;
-                } else if (isNaN(computerScore) == false) {
-                    computerScore = computerScore;
-                }
-            }
-        } else if (scorer == "none") {
-            if (isNaN(playerScore) == true) {
-                playerScore = 0;
-            } else if (isNaN(playerScore) == false) {
-                playerScore = playerScore;
-            }
-            if (isNaN(computerScore) == true) {
-                computerScore = 0;
-            } else if (isNaN(computerScore) == false){
-            computerScore = computerScore;
-            }
-
-        }
     score.innerHTML = "Computer Score: "+ computerScore+"<br>Player Score :" +playerScore;
 
     }
@@ -147,6 +114,7 @@ scissors.addEventListener('click', () => {
 });
 
 //máquina, me dejas?
+//gracias
 
 
 //Llamada a la función Jugada máquina
